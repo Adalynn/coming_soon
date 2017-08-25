@@ -9,8 +9,11 @@ if (isset($_REQUEST['submit'])) {
 	$headers = "From: anubhav.psit.2009@gmail.com" . "\r\n" .
 	"CC: mca.ruchishukla@gmail.com";
 
-	mail($to,$subject,$txt,$headers);
+	if(mail($to,$subject,$txt,$headers)) {
+		header('Location: index.html?msg=done');
+	} else {
+		header('Location: index.html?msg=thanks');
+	}
 
-	header('Location: index.html?msg=thanks');
 }
 ?>
